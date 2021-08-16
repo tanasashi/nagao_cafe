@@ -32,9 +32,7 @@ class DeviseCreateAdmins < ActiveRecord::Migration[5.2]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-      t.integer :id
-      t.string :email
-      t.string :encrypted_password
+      # emailとencrypted_passwordの所は削除中
       t.datetime :created_at
       t.datetime :updated_at
 
