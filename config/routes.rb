@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   resources :try
 
   namespace :admin do
-  resources :genres, only: [:index, :create, :edit, :update]
+   resources :genres, only: [:index, :create, :edit, :update]
+   resources :items, except: [:destroy]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
