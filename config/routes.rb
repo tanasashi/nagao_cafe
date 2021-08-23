@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: 'homes#top'
+  get 'about' => 'homes#about'
 
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
@@ -12,7 +14,6 @@ Rails.application.routes.draw do
     registrations: 'customers/registrations'
   }
 
-  resources :try
 
   namespace :admin do
    resources :genres, only: [:index, :create, :edit, :update]

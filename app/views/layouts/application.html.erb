@@ -10,11 +10,23 @@
   </head>
 
   <body>
+
+
     <% if admin_signed_in? %>
       <li>
+        <%= link_to "賞品一覧", admin_items_path %>
+        <%= link_to "会員一覧", admin_customers_path %>
+        <!--注文履歴一覧の追加  -->
+        <%= link_to "ジャンル一覧", admin_genres_path %>
         <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
       </li>
     <% else %>
+       <li>
+       <%= link_to "About", about_path %>
+       <%= link_to "賞品一覧", admin_items_path %>
+       <%= link_to "新規登録", new_customer_registration_path %>
+       <%= link_to "ログイン", new_admin_session_path %>
+     </li>
     <% end %>
     <%= yield %>
   </body>

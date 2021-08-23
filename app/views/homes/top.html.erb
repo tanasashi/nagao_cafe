@@ -1,0 +1,28 @@
+<main>
+
+  <table class="table">
+    <h2>ジャンル検索</h2>
+    <% @genres.each do |genre| %>
+     <%= genre.name %>
+    <% end %>
+
+  </table>
+
+  <table class="table">
+    <div class="1">
+    <p>ようこそ、ながのCAKEへ！</p>
+    <p>このサイトは、ケーキ販売のECサイトになります。</p>
+    <p>会員でない方も商品の閲覧はできますが、</p>
+    <p>購入には会員登録が必要になります。</p>
+    </div>
+    <div class="2">
+      <h1>新着商品</h1>
+      <% @items.each do |item| %>
+       <%= item.name %>
+       <%= item.price %>
+      <% end %>
+      <li><%= link_to "全ての商品を見る", admin_items_path %></li>
+    </div>
+  </table>
+
+</main>
