@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     registrations: 'customers/registrations'
   }
 
+  resource :customers, only: [:show, :edit, :update]
+    get 'customers/verify' => 'customers#verify'
+    patch 'customers/withdraw' => 'customers#withdraw'
 
   namespace :admin do
    resources :genres, only: [:index, :create, :edit, :update]
