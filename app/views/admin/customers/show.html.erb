@@ -1,4 +1,5 @@
 <%= form_with model:@customer, url:customers_path, local:true do |f| %>
+
  <h4><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h4>
   <td>会員ID  <%= @customer.id %></td></br>
   <td>氏名  <%= @customer.last_name %>     <%= @customer.first_name %></td></br>
@@ -9,7 +10,7 @@
   <td>メールアドレス  <%= @customer.email %></td></br>
   <td>会員ステータス  <%= @customer.is_active %></td></br>
 
-  <td><%= link_to "編集する", edit_admin_customer_path, class:'btn btn-success' %>   <%#= 注文履歴一覧の作成 %></td>
+  <td><%= link_to "編集する", edit_customers, class:'btn btn-success' %>   <%#= 注文履歴一覧の作成 %></td>
 
 
 <% end %>

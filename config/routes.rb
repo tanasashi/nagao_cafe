@@ -14,7 +14,12 @@ Rails.application.routes.draw do
     registrations: 'customers/registrations'
   }
 
-  resource :customers, only: [:show, :edit, :update]
+  resources :addresses, except: [:show, :new]
+
+  #自作customerのroutes
+    get 'customers/mypage' => 'customers#show'
+    get 'customers/mypage/edit' => 'customers#edit'
+    patch 'customers/mypage' => 'customers#update'
     get 'customers/verify' => 'customers#verify'
     patch 'customers/withdraw' => 'customers#withdraw'
 
