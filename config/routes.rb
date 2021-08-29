@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   resources :addresses, except: [:show, :new]
 
+  resources :items, only: [:index, :show]
+
   #自作customerのroutes
     get 'customers/mypage' => 'customers#show'
     get 'customers/mypage/edit' => 'customers#edit'

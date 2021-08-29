@@ -4,14 +4,11 @@
     <title>NaganoCake</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-
-
     <% if admin_signed_in? %>
       <li>
         <%= link_to "賞品一覧", admin_items_path %>
@@ -33,6 +30,7 @@
        <%= link_to "ログイン", new_customer_session_path %>
      </li>
     <% end %>
+
     <%= yield %>
   </body>
 </html>

@@ -15,9 +15,14 @@ class CustomersController < ApplicationController
   end
 
   def verify
+    @customer = current_customer
   end
 
   def withdraw
+    @customer = current_customer
+    @customer.update(is_active: false)
+    reset_session
+    redirect_to root_path
   end
 
   private

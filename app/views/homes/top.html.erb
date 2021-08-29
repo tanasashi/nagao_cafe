@@ -18,8 +18,9 @@
     <div class="2">
       <h1>新着商品</h1>
       <% @items.each do |item| %>
+       <%= attachment_image_tag item, :image, :fill, 50, 50, format: 'jpeg', fallback: 'no_image.jpg', size: "40x40"%>
        <%= item.name %>
-       <%= item.price %>
+       ￥<%= item.price %>
       <% end %>
       <li><%= link_to "全ての商品を見る", admin_items_path %></li>
     </div>
