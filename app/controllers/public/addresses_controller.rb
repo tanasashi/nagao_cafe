@@ -1,4 +1,4 @@
-class AddressesController < ApplicationController
+class Public::AddressesController < ApplicationController
 
   def index
     @addresses = Address.all.order(created_at: :asc)

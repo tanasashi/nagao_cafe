@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  root to: 'homes#top'
-  get 'about' => 'homes#about'
 
-  devise_for :admins, controllers: {
+   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
     passwords: 'admins/passwords',
     registrations: 'admins/registrations'
@@ -14,9 +12,21 @@ Rails.application.routes.draw do
     registrations: 'customers/registrations'
   }
 
+
+ scope module: :public do
+    root to: 'homes#top'
+  get 'about' => 'homes#about'
+
   resources :addresses, except: [:show, :new]
 
   resources :items, only: [:index, :show]
+
+  delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+  resources :cart_items, only: [:index, :update, :create, :destroy]
+
+  resources :orders, only: [:index, :show, :new, :create]
+   get 'customers/confirm' => 'customers#confirm'
+   get 'customers/thanks' => 'customers#thanks'
 
   #自作customerのroutes
     get 'customers/mypage' => 'customers#show'
@@ -24,6 +34,8 @@ Rails.application.routes.draw do
     patch 'customers/mypage' => 'customers#update'
     get 'customers/verify' => 'customers#verify'
     patch 'customers/withdraw' => 'customers#withdraw'
+
+  end
 
   namespace :admin do
    resources :genres, only: [:index, :create, :edit, :update]

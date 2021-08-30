@@ -9,8 +9,9 @@
       <h1>新着商品</h1>
       <div class="item">
       <% @items.each do |item| %>
-      <div>
+      <div><%= link_to item_path(item.id) do %>
        <p><%= attachment_image_tag item, :image, :fill, 70, 70, format: 'jpeg', fallback: 'no_image.jpg', size: "70x70"%></p>
+       <% end %>
        <p><%= item.name %></p>
        <p>￥<%= item.price %></p>
        </div>
