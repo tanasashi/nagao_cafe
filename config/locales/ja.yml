@@ -1,0 +1,20 @@
+# ja.yml
+ja: # 日本語の設定を行う
+  enums: # enumの設定を行う
+    order: # モデル名（Orderモデルに対して）
+      payment_method: # カラム名（payment_methodカラムに対して）
+        credit_card: 'クレジットカード'
+        transfer: '銀行振込'
+      status: # カラム名（statusカラムに対して）
+        money_wait: '入金待ち'
+        money_check: '入金確認'
+        making: '製作中'
+        send_will: '発送準備中'
+        send_was: '発送済み'
+
+    order_detail: # モデル名（Order_detailモデルに対して）
+      making_status: # カラム名（making_statusカラムに対して）
+        not_making: '製作不可'
+        maked: '製作待ち'
+        making: '製作中'
+        finish_making: '製作中完了'

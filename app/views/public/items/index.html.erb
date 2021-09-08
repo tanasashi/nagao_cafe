@@ -1,21 +1,24 @@
+<div class="row">
+<div class="col-sm-2">
 
-  <thead>
-    <h2>ジャンル検索</h2>
+
+    <h5>ジャンル検索</h5>
     <% @genres.each do |genre| %>
-     <%= genre.name %>
+     <%= genre.name %></br>
     <% end %>
-  </thead>
-    <tbody>
-      <h1>新着商品</h1>
+</div>
+    <div class="col-sm-10">
+      <h1>商品一覧</h1>
       <div class="item">
       <% @items.each do |item| %>
       <div><%= link_to item_path(item.id) do %>
-       <p><%= attachment_image_tag item, :image, :fill, 70, 70, format: 'jpeg', fallback: 'no_image.jpg', size: "70x70"%></p>
+       <p><%= attachment_image_tag item, :image, :fill, 100, 100, format: 'jpeg', fallback: 'no_image.jpg', size: "100x100"%></p>
        <% end %>
        <p><%= item.name %></p>
        <p>￥<%= item.price %></p>
        </div>
       <% end %>
       </div>
-    </tbody>
-
+    </div>
+</div>
+</div>

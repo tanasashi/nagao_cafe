@@ -1,16 +1,24 @@
 <h5>マイページ</h5>
 
-<%= form_with model: @customer, url:customers_mypage_edit_path, local:true do |f| %>
+
 <div class="form-group">
-  <label><strong>登録情報</strong><%= link_to "編集する", customers_mypage_edit_path %></label>
+  <div class="col-sm-5">
+  <label><strong>登録情報</strong><%= link_to "編集する", customers_mypage_edit_path, class: 'btn btn-success' %></label>
+<table class="table table-bordered">
 
-    <li>氏名  <%= @customer.last_name %> <%= @customer.first_name %></li>
-    <li>カナ  <%= @customer.last_name_kana %> <%= @customer.first_name_kana %></li>
-    <li>郵便番号  <%= @customer.postal_code %></li>
-    <li>住所  <%= @customer.address %></li>
-    <li>電話番号  <%= @customer.telephone_number %></li>
-    <li>メールアドレス  <%= @customer.email %></li>
+  <%= form_with model: @customer, url:customers_mypage_edit_path, local:true do |f| %>
+
+   <tr> <th>氏名</th>  <th><%= @customer.last_name %> <%= @customer.first_name %></th> </tr>
+   <tr> <th>カナ</th>  <th><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></th> </tr>
+   <tr> <th>郵便番号</th>  <th><%= @customer.postal_code %></th> </tr>
+   <tr> <th>住所</th>  <th><%= @customer.address %></th> </tr>
+   <tr> <th>電話番号</th>  <th><%= @customer.telephone_number %></th> </tr>
+   <tr> <th>メールアドレス</th>  <th><%= @customer.email %></th> </tr>
+  <% end %>
 </div>
-<!--配送先、注文履歴も後で作成-->
-<% end %>
+</table>
+</div>
+</div>
 
+<h5>配送先    <%= link_to "一覧を見る", addresses_path, class: 'btn btn-primary' %></h5>
+<h5>注文履歴    <%= link_to "一覧を見る", orders_path, class: 'btn btn-primary' %></h5>

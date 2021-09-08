@@ -9,8 +9,8 @@
   <div class="text-center">退会する場合は【退会する】をクリックください。</div>
 
   <div class="text-center">
-      <%= link_to "退会しない", customers_mypage_path %>
-      <%= f.submit "退会をする"  %>
+      <%= link_to "退会しない", customers_mypage_path, class: 'btn btn-primary' %>
+      <%= f.submit "退会をする", class: 'btn btn-danger'  %>
 </div>
  <% end %>
       </main>

@@ -24,9 +24,9 @@ Rails.application.routes.draw do
   delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
   resources :cart_items, only: [:index, :update, :create, :destroy]
 
+   post 'orders/confirm' => 'orders#confirm'
+   get 'orders/thanks' => 'orders#thanks'
   resources :orders, only: [:index, :show, :new, :create]
-   get 'customers/confirm' => 'customers#confirm'
-   get 'customers/thanks' => 'customers#thanks'
 
   #自作customerのroutes
     get 'customers/mypage' => 'customers#show'
@@ -38,9 +38,13 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+
+   get '/' => 'admin#top'
    resources :genres, only: [:index, :create, :edit, :update]
    resources :items, except: [:destroy]
    resources :customers, only: [:index, :show, :edit, :update]
+   resources :orders, only: [:show, :update]
+   resources :order_details, only: [:update]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

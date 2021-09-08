@@ -1,5 +1,6 @@
+
 <%= form_with model:@customer, url:customers_mypage_path, local:true do |f| %>
- <h4><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h4>
+ <h4><%= current_customer.last_name %> <%= current_customer.first_name %>さんの会員情報編集</h4>
 
   <td>氏名  <%= f.text_field :last_name %>     <%= f.text_field :first_name %></td></br>
   <td>フリガナ  <%= f.text_field :last_name_kana %>     <%= f.text_field :first_name_kana %></td></br>
@@ -8,8 +9,10 @@
   <td>電話番号  <%= f.text_field :telephone_number %></td></br>
   <td>メールアドレス  <%= f.text_field :email %></td></br>
 
-  <td><%= f.submit "変更を保存"  %></td>
-  <td><%= link_to "退会する", customers_verify_path, class: 'btn btn-default'  %></td>
+
+  <td><%= f.submit "変更を保存", class: 'btn btn-success'   %></td>
+  <td><%= link_to "退会する", customers_verify_path, class: 'btn btn-danger'  %></td>
+
 
   <td></td>
 

@@ -1,22 +1,26 @@
 <main>
+  <div class="row">
+<div class="col-sm-2">
 
-  <table>
     <h2>ジャンル検索</h2>
     <% @genres.each do |genre| %>
-     <%= genre.name %>
+     <%= genre.name %></br>
     <% end %>
-
-  </table>
-
+</div>
+<div class="col-sm-10">
+  <div class="d-flex text-black">
     <%= form_with model:@cart_item, url:cart_items_path, method: :post, local:true do |f| %>
-       <tr><%= attachment_image_tag @item, :image, format: "jpeg", fallback: "no_image.jpg", size: "70x70" %></tr>
+       <tr><%= attachment_image_tag @item, :image, format: "jpeg", fallback: "no_image.jpg", size: "150x150" %></tr>
        <tr><%= @item.name %></tr></br>
        <tr><%= @item.introduction %></tr></br>
-       <tr>￥<%= @item.price %>(税込み)</tr></br>
+       <tr>￥<%= (@item.price * 1.1).floor %>(税込み)</tr></br>
        <%= f.hidden_field :item_id, value: @item.id %>
-       <%= f.select :amount, *[1..7] %></br>
-       <%= f.submit "カートに入れる"  %>
+       <%= f.select :amount, *[1..7] %>
+       <%= f.submit "カートに入れる", :class=>"btn btn-success" %>
 
     <% end %>
+  </div>
+</div>
+</div>
 
 </main>

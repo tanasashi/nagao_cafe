@@ -1,14 +1,18 @@
 <%= form_with model:@customer, url:admin_customers_path, local:true do |f| %>
 
- <h4><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h4>
-  <td>会員ID  <%= @customer.id %></td></br>
-  <td>氏名  <%= @customer.last_name %>     <%= @customer.first_name %></td></br>
-  <td>フリガナ  <%= @customer.last_name_kana %>     <%= @customer.first_name_kana %></td></br>
-  <td>郵便番号  <%= @customer.postal_code %></td></br>
-  <td>住所  <%= @customer.address %></td></br>
-  <td>電話番号  <%= @customer.telephone_number %></td></br>
-  <td>メールアドレス  <%= @customer.email %></td></br>
-  <td>会員ステータス  <%= @customer.is_active %></td></br>
+ <h4><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h6>
+  <h6>会員ID  <%= @customer.id %></h6></br>
+  <h6>氏名  <%= @customer.last_name %>     <%= @customer.first_name %></h6></br>
+  <h6>フリガナ  <%= @customer.last_name_kana %>     <%= @customer.first_name_kana %><h6></br>
+  <h6>郵便番号  <%= @customer.postal_code %><h6></br>
+  <h6>住所  <%= @customer.address %><h6></br>
+  <h6>電話番号  <%= @customer.telephone_number %><h6></br>
+  <h6>メールアドレス  <%= @customer.email %><h6></br>
+  <h6>会員ステータス  <% if @customer.is_active == true then %>
+        有効
+        <% else %>
+        退会
+        <% end %><h6></br>
 
   <td><%= link_to "編集する", edit_admin_customer_path, class:'btn btn-success' %>   <%#= 注文履歴一覧の作成 %></td>
 

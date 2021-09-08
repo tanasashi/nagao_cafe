@@ -1,0 +1,54 @@
+<h3>注文履歴詳細</h3>
+
+<div class="row">
+<div class="col-sm-6">
+<tr>
+  <th>購入者  <%= @order.name %></th></br>
+  <th>注文日  <%= @order.created_at.strftime("%Y/%m/%d ") %></th></br>
+  <th>配送先  〒<%= @order.postal_code %>
+  <%= @order.address %></br>
+  <%= @order.name %></th></br>
+  <th><%= form_with model:@order, url:admin_order_path(@order.id), method: :patch, local:true do |f| %>
+  <td><%= f.select :status, ["入金待ち", "入金確認", "製作中", "発送準備中", "発送済み"] %>
+  <%= f.submit "更新", :class=>"btn btn-success" %></td>
+  <% end %></th></br>
+
+</tr>
+</div>
+<div class="col-sm-7">
+<strong>注文内容</strong>
+<table class="table table-bordered">
+<thead  class="thead-light">
+  <tr>
+    <th>商品名</th>
+    <th>単価(税込み)</th>
+    <th>数量</th>
+    <th>小計</th>
+    <th>製作ステータス</th>
+  </tr>
+</thead>
+<tbody>
+<% @order.order_details.each do |order_detail| %>
+  <tr>
+    <th><%= order_detail.item.name %></th>
+    <th><%= (order_detail.item.price * 1.1).floor %></th>
+    <th><%= order_detail.amount %></th>
+    <th><%= (order_detail.item.price * 1.1).floor * order_detail.amount %></th>
+    <th><%= form_with model:order_detail, url:admin_order_detail_path(order_detail.id), method: :patch, local:true do |f| %>
+    <%= f.select :making_status, OrderDetail.making_statuses.keys.map { |k| [t("enums.order_detail.making_status.#{k}"), k]} %>
+     <%= f.submit "更新", :class=>"btn btn-success" %>
+      <% end %></th>
+  <tr>
+<% end %>
+</tbody>
+</table>
+<div class="col-sm-3">
+  <tr>
+    <td>商品合計<%= @order.total_payment - @order.shipping_cost %>円</td></br>
+    <td>送料<%= @order.shipping_cost %>円</td></br>
+    <td>請求額合計<%= @order.total_payment %>円</td></br>
+  </tr>
+</div>
+
+</div>
+</div>

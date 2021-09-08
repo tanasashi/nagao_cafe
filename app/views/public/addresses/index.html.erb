@@ -1,4 +1,5 @@
 <h3>配送先一覧・登録</h3>
+
 <table>
   <%= form_with model:@address, local:true do |f| %>
   <div class="form-group">
@@ -11,17 +12,20 @@
   <div class="form-group">
   宛名<%= f.text_field :name %>
 
-  <%= f.submit '新規登録' %>
+  <%= f.submit '新規登録', class: 'btn btn-success' %>
   </div class="form-group">
 
 <% end %>
-<thead>
+</table>
 
+<div class="col-sm-5">
+<table class="table table-bordered">
+<thead class="thead-light">
   <tr>
-  <td>郵便番号  </td>
-  <td>住所  </td>
-  <td>宛名  </td>
-  <td></td>
+  <th>郵便番号  </th>
+  <th>住所  </th>
+  <th>宛名  </th>
+  <th></th>
   </tr>
 <thead>
 <tbody>
@@ -30,9 +34,10 @@
   <td><%= address.postal_code %></td>
   <td><%= address.address %></td>
   <td><%= address.name %></td>
-  <td><%= link_to "Edit",edit_address_path(address.id) %></td>
-  <td><%= link_to "Destroy", address_path(address.id), method: :delete, "data-confirm" => "Are You Sure?" %></td>
+  <td><%= link_to "Edit",edit_address_path(address.id), class: 'btn btn-success' %>
+  <%= link_to "Destroy", address_path(address.id), method: :delete, "data-confirm" => "Are You Sure?", class: 'btn btn-danger' %></td>
   </tr>
 <% end %>
 </tbody>
+</div>
 </table>
